@@ -1,20 +1,21 @@
 version: "3"
 
 services:
-  db:
-    image: postgres:9-alpine
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
-    volumes:
-      - "db.data:/var/lib/postgresql/data"
-    ports:
-      - "5433:5432"
-    tty: true
+    db:
+        image: postgres:9-alpine
+        environment:
+            POSTGRES_USER: admin
+            POSTGRES_DB: development
+            POSTGRES_PASSWORD: password
+        volumes:
+            - "db.data:/var/lib/postgresql/data"
+        ports:
+            - "5433:5432"
+        tty: true
 volumes:
-  db.data:
-    external: true
+    db.data:
+        external: true
 networks:
-  default:
-    external:
-      name: docker-network
+    default:
+        external:
+            name: docker-network
